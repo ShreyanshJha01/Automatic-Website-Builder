@@ -16,7 +16,13 @@ Automatic Website Builder is an AI-powered platform that helps you create websit
 
 ## 🖥️ Screenshots
 
+<img width="949" height="399" alt="Screenshot 2026-11-01 220212" src="https://github.com/user-attachments/assets/ed04cf2d-b875-49fb-9557-ed776afab84d" />
+
+
 <img width="947" height="401" alt="Screenshot 2026-11-01 220033" src="https://github.com/user-attachments/assets/a50cfd5a-5440-4571-931e-7ddf0001922f" />
+
+<img width="948" height="400" alt="Screenshot 2026-11-01 220111" src="https://github.com/user-attachments/assets/d4d9fb37-6124-4875-b697-8aa76e78a4a7" />
+
 
 
 ## 🚀 Getting Started
