@@ -1,18 +1,78 @@
 # Automatic Website Builder 🚀
 
-**Turn your ideas into websites with AI.**
+### Build websites with AI. Plan, generate, test, and refine — automatically.
 
-Automatic Website Builder is an AI-powered platform that helps you create websites simply by describing what you want. Enter your idea, let AI build it, preview the result, and download your website — all from one place.
+An AI-powered autonomous website builder that transforms natural-language prompts into functional websites through a multi-agent development workflow.
 
-## ✨ What You Can Do
+Instead of manually writing code, users describe what they want to build. A Supervisor Agent coordinates specialized agents to plan the application, generate code, test the implementation, and apply corrections when necessary.
 
-- **Build with Prompts:** Describe your idea in plain English and let AI turn it into a website.
-- **AI-Powered Development:** Automatically generate website layouts, styling, and functionality.
-- **Live Preview:** See your generated website directly in the application.
-- **Refine Your Website:** Improve your website by providing additional instructions.
-- **Download Your Project:** Export your generated website as a ZIP file.
-- **Manage Projects:** Create and manage multiple website projects from one dashboard.
-- **User Accounts:** Sign in and keep your projects organized.
+---
+
+## ✨ Features
+
+- **Natural Language Development:** Describe your website or application using simple prompts.
+- **Multi-Agent Architecture:** Specialized AI agents collaborate to build and validate websites.
+- **AI-Powered Planning:** Supervisor Agent analyzes requirements and coordinates the development workflow.
+- **Automated Code Generation:** Developer Agent generates website code based on the project requirements.
+- **Automated Testing:** Tester Agent independently evaluates generated code and identifies potential issues.
+- **Iterative Corrections:** Failed or incomplete checks can trigger developer corrections and another testing attempt.
+- **Live Website Preview:** Preview generated websites directly inside the application.
+- **Project Management:** Create, manage, and revisit multiple website projects.
+- **Downloadable Projects:** Download generated websites as ZIP archives.
+- **Authentication:** Secure user authentication and project ownership.
+
+## 🧠 Multi-Agent Architecture
+
+The platform follows a coordinated multi-agent workflow.
+
+```mermaid
+flowchart TD
+    A[User Prompt] --> B[Supervisor Agent]
+    B --> C[Requirement Analysis and Planning]
+    C --> D[Developer Agent]
+    D --> E[Generate Website]
+    E --> F[Guardrails Validation]
+    F --> G[Tester Agent]
+    G --> H{Testing Result}
+    H -->|Pass| I[Save Generated Website]
+    H -->|Correction Required| J[Developer Correction]
+    J --> F
+    I --> K[Live Preview]
+    I --> L[Download ZIP]
+```
+
+### Agent Responsibilities
+
+| Agent | Responsibility |
+|---|---|
+| Supervisor Agent | Understands user requirements and coordinates the workflow. |
+| Developer Agent | Generates and modifies website code. |
+| Tester Agent | Independently evaluates generated output and identifies issues. |
+| Guardrails | Validates generated files and enforces generation constraints. |
+
+The orchestration layer manages communication between agents, workflow execution, validation, and correction attempts.
+
+## 🛠️ Technology Stack
+
+### Backend
+- Python
+- FastAPI
+- SQLAlchemy
+- Google Agent Development Kit (ADK)
+- OpenRouter API
+- JWT Authentication
+
+### Frontend
+- HTML5
+- CSS3
+- Tailwind CSS
+- Vanilla JavaScript
+
+### Database and AI
+- SQLite (V1 database configuration)
+- Large Language Models (LLMs)
+- OpenRouter model integration
+
 
 ## 🖥️ Screenshots
 
@@ -24,75 +84,130 @@ Automatic Website Builder is an AI-powered platform that helps you create websit
 <img width="948" height="400" alt="Screenshot 2026-11-01 220111" src="https://github.com/user-attachments/assets/d4d9fb37-6124-4875-b697-8aa76e78a4a7" />
 
 
+## ⚙️ Getting Started
 
-## 🚀 Getting Started
+### Prerequisites
 
-### Clone the repository
+- Python 3.11+
+- Git
+- An OpenRouter API key
+- Required environment variables configured for your application
+
+### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/ShreyanshJha01/Automatic-Website-Builder.git
+git clone https://github.com/YOUR_USERNAME/Automatic-Website-Builder.git
+
 cd Automatic-Website-Builder
 ```
 
-### Install dependencies
+### 2. Create a Virtual Environment
 
 ```bash
 python -m venv venv
 ```
 
-Activate the environment:
+Activate it:
 
 **Windows**
+
 ```bash
 venv\Scripts\activate
 ```
 
 **Linux / macOS**
+
 ```bash
 source venv/bin/activate
 ```
 
-Install packages:
+### 3. Install Dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-### Configure environment
+### 4. Configure Environment Variables
 
-Create a `.env` file and add the required API keys and application configuration.
+Create a `.env` file using `.env.example` as a reference.
 
-### Run the application
+Configure the required application settings, including:
+
+- OpenRouter API key
+- LLM model configuration
+- JWT secret
+- Database configuration
+- Application port
+
+Never commit your `.env` file or API credentials.
+
+### 5. Start the Application
+
+From the project root:
 
 ```bash
 uvicorn app.main:app --reload
 ```
 
-Open **http://localhost:8000** in your browser.
+Open the application at:
 
-## 🛠️ Built With
+```text
+http://localhost:8000
+```
 
-- Python
-- FastAPI
-- JavaScript
-- HTML & CSS
-- Tailwind CSS
-- SQLAlchemy
-- Google ADK
-- OpenRouter
+API health endpoint:
 
-## 📌 Project Status
+```text
+http://localhost:8000/api/health
+```
 
-Currently under active development.
+## 🔄 Application Workflow
 
-## 🤝 Contributions
+1. Register or sign in to your account.
+2. Create a new project.
+3. Describe the website you want to build.
+4. The Supervisor Agent analyzes the request and coordinates development.
+5. The Developer Agent generates the website.
+6. Guardrails validate the generated output.
+7. The Tester Agent evaluates the implementation.
+8. If corrections are required, the Developer Agent gets another opportunity to improve the output.
+9. Preview the generated website.
+10. Download the completed project as a ZIP archive.
 
-Suggestions, bug reports, and contributions are welcome!
+## 🔒 Security
+
+The application includes:
+
+- JWT-based authentication.
+- Project ownership validation.
+- Protected API endpoints.
+- Preview token validation.
+- Generated-file path validation.
+- Environment-based secret configuration.
+
+## 🚧 Current Scope
+
+The initial version focuses on generating frontend websites using HTML, CSS, Tailwind CSS, and vanilla JavaScript.
+
+The objective is to establish a reliable autonomous development workflow before expanding into more advanced capabilities.
+
+
+## 🤝 Contributing
+
+Contributions, suggestions, and bug reports are welcome.
+
+1. Fork the repository.
+2. Create a feature branch.
+3. Commit your changes.
+4. Push the branch.
+5. Open a Pull Request.
 
 ## 📄 License
 
-No license has been specified yet.
+This project is currently under development. Add a license before distributing or accepting contributions under specific licensing terms.
 
 ---
+
+**Automatic Website Builder** — Turning ideas into websites through autonomous AI agents.
 
 **Have an idea? Build it with AI.**
