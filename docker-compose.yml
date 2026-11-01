@@ -1,0 +1,50 @@
+version: '3.9'
+
+services:
+  forge:
+    build:
+      context: .
+    container_name: forge-app
+    env_file:
+      - .env
+    environment:
+      PORT: 8000
+      DATABASE_URL: sqlite:////data/forge.db
+    ports:
+      - "8000:8000"
+    volumes:
+      - forge_data:/data
+      - forge_workspaces:/app/app/workspaces
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "curl -fsS http://127.0.0.1:8000/health || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 20s
+
+  forge-preview:
+    build:
+      context: .
+    container_name: forge-preview
+    env_file:
+      - .env
+    environment:
+      PORT: 4173
+      DATABASE_URL: sqlite:////data/forge.db
+    ports:
+      - "4173:4173"
+    volumes:
+      - forge_data:/data
+      - forge_workspaces:/app/app/workspaces
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "curl -fsS http://127.0.0.1:4173/health || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 20s
+
+volumes:
+  forge_data:
+  forge_workspaces:
